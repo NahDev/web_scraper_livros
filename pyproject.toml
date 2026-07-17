@@ -1,0 +1,36 @@
+[project]
+name = "web-scraper-livrarias"
+version = "0.1.0"
+description = "Multi-bookstore scraper with bronze/silver/gold layers"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "httpx>=0.28.1",
+    "lxml>=6.1.1",
+    "pydantic>=2.13.4",
+    "selectolax>=0.4.11",
+    "sqlalchemy>=2.0.51",
+    "tenacity>=9.1.4",
+]
+
+[project.scripts]
+martins-fontes = "martins_fontes.start:main"
+livraria-da-vila = "livraria_da_vila.start:main"
+livrarias-curitiba = "livrarias_curitiba.start:main"
+livraria-travessa = "travessa.start:main"
+nova-fronteira = "nova_fronteira.start:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = [
+    "shared",
+    "martins_fontes",
+    "livraria_da_vila",
+    "travessa",
+    "livrarias_curitiba",
+    "nova_fronteira",
+]
